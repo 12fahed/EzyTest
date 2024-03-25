@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 
 var studentSchema = new mongoose.Schema({
+    file: {
+        type: String
+    },
     insti: {
         type: String
     },
