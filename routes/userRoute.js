@@ -20,15 +20,22 @@ var storage = multer.diskStorage({
 })
 
 // Importing Controllers
-const homeController = require('../controllers/home_controller');
+const adminController = require('../controllers/admin_controller');
 const fileController = require('../controllers/file_controller');
-
+const login_sign = require('../controllers/login_sign')
 // const userController = require('../controllers/userController')  ///<<<<<<<<<<<<<<<<---------------TO BE TAKEN CARE OF
 
 var upload = multer({ storage: storage })
 
 // Making Routes
-router.get('/', homeController.home);
+router.get('/', login_sign.login)
+
+router.get('/login', login_sign.login)
+router.post('/login', login_sign.submit_login);
+
+router.get('/signup', login_sign.sign)
+router.post('/signup', login_sign.submit_sign);
+
 router.post('/upload', upload.single('file') ,fileController.upload);
 router.get('/view/:id', fileController.view);
 router.get('/delete/:id', fileController.delete);
