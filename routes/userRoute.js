@@ -36,6 +36,8 @@ router.post('/login', login_sign.submit_login);
 router.get('/signup', login_sign.sign)
 router.post('/signup', login_sign.submit_sign);
 
+router.get('/admin', adminController.admin)
+
 router.post('/upload', upload.single('file') ,fileController.upload);
 router.get('/view/:id', fileController.view);
 router.get('/delete/:id', fileController.delete);

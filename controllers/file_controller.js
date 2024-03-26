@@ -114,7 +114,7 @@ module.exports.upload = async function(req, res) {
 
         // res.send({ status: 200, success: true, msg: "CSV Imported"})
 
-        return res.redirect('/');
+        return res.redirect('/admin');
     } catch (error) {
         console.log('Error in fileController/upload', error);
         res.status(500).send('Internal server error');
@@ -167,10 +167,10 @@ module.exports.delete = async function(req, res) {
         if(isFile){
             await CSV.deleteOne({file: req.params.id});
             await User.deleteMany({file: req.params.id})
-            return res.redirect("/");
+            return res.redirect("/admin");
         }else{
             console.log("File not found");
-            return res.redirect("/");
+            return res.redirect("/admin");
         }
     } catch (error) {
         console.log('Error in fileController/delete', error);
