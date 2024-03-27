@@ -5,10 +5,7 @@ const File = require("../models/csv");
 module.exports.admin = async function(req, res) {
     try {
         let file = await File.find({});
-        return res.render('admin', {
-            files: file,
-            title: "Admin"
-        });
+        return res.render('admin', {files: file, title: "Admin", adminName: "adminName"});
     } catch (error) {
         console.log('Error in adminController/admin', error);
         return;

@@ -9,6 +9,12 @@ const csvParser = require('csv-parser');
 const CSV = require('../models/csv');
 const path = require('path');
 const bcryptjs = require("bcryptjs")
+const express = require('express')
+const bodyParser = require('body-parser')
+
+const app = express()
+
+app.use(bodyParser)
 
 function create_random_string(string_length){
     var random_String ="";
@@ -37,13 +43,16 @@ module.exports.upload = async function(req, res) {
             return res.status(400).send('Select CSV files only.');
         }
 
+        var adminName = req.body.adminName 
         // console.log(req.file);
         let file = await CSV.create({
             fileName: req.file.originalname,
             filePath: req.file.path,
-            file: req.file.filename
+            file: req.file.filename,
+            admin: adminName
         });
-
+        
+        
         // ----------------------
         var userData = []
 
@@ -113,8 +122,8 @@ module.exports.upload = async function(req, res) {
         })
 
         // res.send({ status: 200, success: true, msg: "CSV Imported"})
-
-        return res.redirect('/admin');
+        
+        return res.redirect('/admin')
     } catch (error) {
         console.log('Error in fileController/upload', error);
         res.status(500).send('Internal server error');

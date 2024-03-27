@@ -9,6 +9,9 @@ const fileSchema = new mongoose.Schema({
   },
   file: {
     type: String
+  },
+  admin: {
+    type: String
   }
 }, {
   timestamps: {

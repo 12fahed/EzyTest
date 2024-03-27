@@ -46,7 +46,7 @@ module.exports.submit_login= async function(req, res) {
 
             if (check && passCheck) {
                 let file = await File.find({});
-                return res.render('admin', { files: file, title: "Admin"});
+                return res.render('admin', { files: file, title: "Admin", adminName: check.fname});
             } else {
                 res.send("Wrong Password");
             }
