@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Home Page</title>
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-    <form action="/physics" method="post">
-        Physics: <input type="submit">
-    </form>
+    <div class="subject-box">
+        <form action="/physics" method="post">
+            <label for="physics">Physics:</label> 
+            <input id="physics" type="submit">
+        </form>
+    </div>
 
-    <form action="/chemistry" method="post">
-        Chemistry: <input type="submit">
-    </form>
+    <div class="subject-box">
+        <form action="/chemistry" method="post">
+            <label for="chemistry">Chemistry:</label> 
+            <input id="chemistry" type="submit">
+        </form>
+    </div>
 
-    <form action="/maths" method="post">
-        Maths: <input type="submit">
-    </form>
+    <div class="subject-box">
+        <form action="/maths" method="post">
+            <label for="maths">Maths:</label> 
+            <input id="maths" type="submit">
+        </form>
+    </div>
 </body>
 </html>
