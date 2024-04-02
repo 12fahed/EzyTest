@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h1>Questions</h1>
+
+    <form action="/quesSub" method="post">
+        <input type="submit" class="submit-btn" placeholder="Submit Questions">
+        <input type="hidden" name="fileName" id="fileName" value="<%= file.slice(0, 7).toUpperCase() %>">
+        <h1>Test: <%= file.slice(0, 7).toUpperCase() %></h1>
+        <% data.questions.forEach((question, index) => { %>
+            <div class="question">
+                <h4> Question Number: <%= question.question_id %> </h4>
+                <h5> Question: <%= question.question_text %> </h5>
+                <ul>
+                <% Object.keys(question.options).forEach((option) => { %>
+                    <li> 
+                        <input type="radio" name="question<%= index %>"> <%= option %> : <%= question.options[option] %> 
+                    </li>
+                <% }); %>
+                </ul>
+                <p> Correct Option: <%= question.options[question.correct_options[0]] %></p>
+            </div>
+        <% }) %>
+    </form>
+
+
+</body>
+</html>

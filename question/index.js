@@ -26,6 +26,10 @@ app.use(express.static("public"))
 app.use(express.json()); // Middleware to parse JSON bodies
 
 app.get('/', (req, res) => {
+  res.render("index.ejs")
+});
+
+app.post('/physics', (req, res) =>{
   fs.readFile('physics.json', 'utf8', (err, data) => {
     if (err) {
       console.error('Error reading JSON file:', err);
@@ -34,9 +38,35 @@ app.get('/', (req, res) => {
     }
     
     const jsonData = JSON.parse(data);
-    res.render("index.ejs", {data: jsonData, file: "physics.json"});
-  });
-});
+    res.render("question.ejs", {data: jsonData, file: "physics.json"});
+  }); 
+})
+
+app.post('/chemistry', (req, res) =>{
+  fs.readFile('chemistry.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading JSON file:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    
+    const jsonData = JSON.parse(data);
+    res.render("question.ejs", {data: jsonData, file: "chemistry.json"});
+  }); 
+})
+
+app.post('/maths', (req, res) =>{
+  fs.readFile('maths.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading JSON file:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    
+    const jsonData = JSON.parse(data);
+    res.render("question.ejs", {data: jsonData, file: "maths.json"});
+  }); 
+})
 
 app.post('/quesSub', async (req, res) => {
   try {

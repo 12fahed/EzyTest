@@ -1,0 +1,134 @@
+{
+   "questions":[
+      {
+         "question_id":1,
+         "question_text":"What is the chemical symbol for gold?",
+         "options":{
+            "a":"Au",
+            "b":"Ag",
+            "c":"Fe",
+            "d":"Cu"
+         },
+         "correct_options":[
+            "a"
+         ]
+      },
+      {
+         "question_id":2,
+         "question_text":"What is the pH value of pure water at room temperature?",
+         "options":{
+            "a":"7",
+            "b":"8",
+            "c":"6",
+            "d":"5"
+         },
+         "correct_options":[
+            "a"
+         ]
+      },
+      {
+         "question_id":3,
+         "question_text":"Which gas is the most abundant element in the Earth's atmosphere?",
+         "options":{
+            "a":"Nitrogen",
+            "b":"Oxygen",
+            "c":"Carbon dioxide",
+            "d":"Argon"
+         },
+         "correct_options":[
+            "a"
+         ]
+      },
+      {
+         "question_id":4,
+         "question_text":"What is the chemical formula for water?",
+         "options":{
+            "a":"H2O",
+            "b":"CO2",
+            "c":"NH3",
+            "d":"CH4"
+         },
+         "correct_options":[
+            "a"
+         ]
+      },
+      {
+         "question_id":5,
+         "question_text":"What is the process by which a solid changes directly into a gas?",
+         "options":{
+            "a":"Condensation",
+            "b":"Sublimation",
+            "c":"Evaporation",
+            "d":"Deposition"
+         },
+         "correct_options":[
+            "b"
+         ]
+      },
+      {
+         "question_id":6,
+         "question_text":"Which element has the chemical symbol 'He'?",
+         "options":{
+            "a":"Hydrogen",
+            "b":"Helium",
+            "c":"Lithium",
+            "d":"Beryllium"
+         },
+         "correct_options":[
+            "b"
+         ]
+      },
+      {
+         "question_id":7,
+         "question_text":"What is the chemical name for table salt?",
+         "options":{
+            "a":"Sodium bicarbonate",
+            "b":"Sodium chloride",
+            "c":"Sodium hydroxide",
+            "d":"Sodium nitrate"
+         },
+         "correct_options":[
+            "b"
+         ]
+      },
+      {
+         "question_id":8,
+         "question_text":"Which gas is responsible for the greenhouse effect?",
+         "options":{
+            "a":"Oxygen",
+            "b":"Carbon dioxide",
+            "c":"Methane",
+            "d":"Nitrogen"
+         },
+         "correct_options":[
+            "b"
+         ]
+      },
+      {
+         "question_id":9,
+         "question_text":"What is the process of combining hydrogen and oxygen to produce water?",
+         "options":{
+            "a":"Photosynthesis",
+            "b":"Oxidation",
+            "c":"Hydrolysis",
+            "d":"Combustion"
+         },
+         "correct_options":[
+            "d"
+         ]
+      },
+      {
+         "question_id":10,
+         "question_text":"Which of the following is a noble gas?",
+         "options":{
+            "a":"Nitrogen",
+            "b":"Oxygen",
+            "c":"Neon",
+            "d":"Sulfur"
+         },
+         "correct_options":[
+            "c"
+         ]
+      }
+   ]
+}
