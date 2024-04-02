@@ -12,7 +12,7 @@
     <form action="/quesSub" method="post">
         <input type="submit" class="submit-btn" placeholder="Submit Questions">
         <input type="hidden" name="fileName" id="fileName" value="<%= file.slice(0, 7).toUpperCase() %>">
-        <h1>Test: <%= file.slice(0, 7).toUpperCase() %></h1>
+        <h1>Test: <span id="testName"> </span></h1>
         <% data.questions.forEach((question, index) => { %>
             <div class="question">
                 <h4> Question Number: <%= question.question_id %> </h4>
@@ -29,6 +29,11 @@
         <% }) %>
     </form>
 
+    <script>
+        var fileName = document.getElementById('fileName').value;
+        var testName = fileName.split('.')[0].toUpperCase();
+        document.getElementById('testName').textContent = testName;
+    </script>
 
 </body>
 </html>
