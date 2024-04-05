@@ -2,6 +2,7 @@ const File = require("../models/csv");
 const express = require('express')
 const bcryptjs = require("bcryptjs")
 const admin = require("../models/admin")
+const stud = require("../models/user")
 const app = express()
 
 app.use(express.urlencoded({extended: false}))
@@ -46,7 +47,7 @@ module.exports.submit_login= async function(req, res) {
 
             if (check && passCheck) {
                 let file = await File.find({});
-                return res.render('admin', { files: file, title: "Admin", adminName: check.fname});
+                return res.render('admin', { files: file, title: "Admin", adminName: check.fname, instiKey: check.instiKey});
             } else {
                 res.send("Wrong Password");
             }

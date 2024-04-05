@@ -7,6 +7,9 @@ var studentSchema = new mongoose.Schema({
     insti: {
         type: String
     },
+    instiKey: {
+        type: String
+    },
     year: {
         type: String
     },

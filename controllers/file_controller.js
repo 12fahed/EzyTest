@@ -44,6 +44,7 @@ module.exports.upload = async function(req, res) {
         }
 
         var adminName = req.body.adminName 
+        console.log(req.body.instiKey)
         // console.log(req.file);
         let file = await CSV.create({
             fileName: req.file.originalname,
@@ -115,7 +116,6 @@ module.exports.upload = async function(req, res) {
                     });
                     // console.log(email)
                     //NODEMAILER ENDS
-            
                 }
             }
     
