@@ -9,9 +9,9 @@
 <body>
     <h1>Questions</h1>
 
-    <form action="/quesSub" method="post">
-        <input type="submit" class="submit-btn" placeholder="Submit Questions">
-        <input type="hidden" name="fileName" id="fileName" value="<%= file.slice(0, 7).toUpperCase() %>">
+    <form action="/quesSub" method="post" id="questionForm">
+        <input type="submit" class="submit-btn" value="Submit Questions">
+        <input type="hidden" name="fileName" id="fileName">
         <h1>Test: <span id="testName"> </span></h1>
         <% data.questions.forEach((question, index) => { %>
             <div class="question">
@@ -30,9 +30,14 @@
     </form>
 
     <script>
-        var fileName = document.getElementById('fileName').value;
-        var testName = fileName.split('.')[0].toUpperCase();
-        document.getElementById('testName').textContent = testName;
+        document.addEventListener("DOMContentLoaded", function() {
+            var fileNameInput = document.getElementById('fileName');
+            var fileName = '<%= file %>';
+            fileNameInput.value = fileName.split('.')[0].toUpperCase();
+            var testName = fileName.split('.')[0].toUpperCase();
+            document.getElementById('testName').textContent = testName;
+            
+        });
     </script>
 
 </body>

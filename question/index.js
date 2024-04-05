@@ -71,9 +71,10 @@ app.post('/maths', (req, res) =>{
 //THIS NEED TO BE CHANGED
 app.post('/quesSub', async (req, res) => {
   try {
-    const collection = client.db(databaseName).collection("questions");
+    const collection = client.db(databaseName).collection("questions")
+    const fileName = req.body.fileName
 
-    fs.readFile('physics.json', 'utf8', (err, data) => {
+    fs.readFile(fileName+'.json', 'utf8', (err, data) => {
       if (err) {
         console.error('Error reading JSON file:', err);
         res.status(500).send('Internal Server Error');
@@ -92,6 +93,7 @@ app.post('/quesSub', async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
