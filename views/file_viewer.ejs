@@ -33,22 +33,27 @@
     </div>
 </div>
 
-<!-- search results -->
 <div class="result-aria">
     <table>
         <thead>
             <tr>
-            <% for(let h of head) { %>
-                <th><%= h %></th>
-            <% } %>
+                <th>Roll no</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone No</th>
             </tr>
         </thead>
         <tbody>
-            <% for(let row of data) { %>
+            <% for(let student of data) { %>
             <tr>
-                <% for(let key of Object.keys(row)) { %>
-                    <td><%= row[key] %></td>
-                <% } %>
+                <td><%= student.rollNo %></td>
+                <td><%= student.fname %></td>
+                <td><%= student.mname %></td>
+                <td><%= student.lname %></td>
+                <td><%= student.email %></td>
+                <td><%= student.phno %></td>
             </tr>
             <% } %>
         </tbody>

@@ -3,7 +3,10 @@ const express = require('express')
 const bcryptjs = require("bcryptjs")
 const admin = require("../models/admin")
 const stud = require("../models/user")
+const cookieParser = require('cookie-parser')
+
 const app = express()
+app.use(cookieParser())
 
 app.use(express.urlencoded({extended: false}))
 
@@ -47,7 +50,10 @@ module.exports.submit_login= async function(req, res) {
 
             if (check && passCheck) {
                 let file = await File.find({});
+                res.cookie('admin', check.fname)
+                res.cookie('instiKey', check.instiKey)
                 return res.render('admin', { files: file, title: "Admin", adminName: check.fname, instiKey: check.instiKey});
+                // res.send(req.cookies)
             } else {
                 res.send("Wrong Password");
             }

@@ -4,8 +4,11 @@ const router = express.Router();
 const user = express()
 const path = require('path')
 const multer = require('multer');
+const cookieParser = require('cookie-parser')
+
 
 const bodyParser = require('body-parser')
+user.use(cookieParser())
 
 user.use(bodyParser.urlencoded({ extended: true }))
 user.use(express.static(path.resolve(__dirname, 'public')))

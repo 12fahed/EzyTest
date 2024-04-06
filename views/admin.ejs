@@ -14,6 +14,10 @@
     </div>
 </div>
 
+<div class="title">
+    <h3 id="adminName"></h3>
+</div>
+
 <!-- upload -->
 <div class="container">
     <!-- main text -->
@@ -26,7 +30,6 @@
     <form action="/upload" method="post" enctype="multipart/form-data">
         <div class="input-container">
             <input type="file" id="csvFile" name="file" accept=".csv">
-            <input type="hidden" name="adminName" id="adminNameInput" value="<%= adminName %>">
             <button class="upload-btn">Upload and add Students</button>
         </div>
     </form>
@@ -66,3 +69,4 @@
     <% } %>
 </div>
 
+<script src="../js/adminName.js"></script>

@@ -8,7 +8,9 @@ const expressLayouts = require('express-ejs-layouts');
 const csv = require('csv-parser');
 const db = require("./config/mongoose");
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 
+app.use(cookieParser())
 
 var userRoute = require('./routes/userRoute')
 

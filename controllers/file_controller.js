@@ -11,10 +11,13 @@ const path = require('path');
 const bcryptjs = require("bcryptjs")
 const express = require('express')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser');
+const { markAsUntransferable } = require('worker_threads');
 
 const app = express()
-
+app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser)
+app.use(cookieParser())
 
 function create_random_string(string_length){
     var random_String ="";
@@ -43,14 +46,15 @@ module.exports.upload = async function(req, res) {
             return res.status(400).send('Select CSV files only.');
         }
 
-        var adminName = req.body.adminName 
-        console.log(req.body.instiKey)
+        // console.log(req.cookies)
+        // var adminName = req.body.adminName 
+        
         // console.log(req.file);
         let file = await CSV.create({
             fileName: req.file.originalname,
             filePath: req.file.path,
             file: req.file.filename,
-            admin: adminName
+            admin: req.cookies.admin
         });
         
         
@@ -71,6 +75,7 @@ module.exports.upload = async function(req, res) {
                 userData.push({
                     file: req.file.filename,
                     insti: response[i].insti,
+                    instiKey: req.cookies.instiKey,
                     year: response[i].year,
                     div: response[i].div,
                     stud_data: users
@@ -89,6 +94,7 @@ module.exports.upload = async function(req, res) {
                     response[i].stud_data[j].password = password
 
                     //NODEMAILER START
+                    /*
                     var html=`Hello ${(response[i].stud_data[j]).fname}, you have been successfully added to the ${response[i].insti} your Username: ${response[i].stud_data[j].email} and Password: ${password}`
             
                     var transporter = nodemailer.createTransport({
@@ -115,6 +121,7 @@ module.exports.upload = async function(req, res) {
                     }
                     });
                     // console.log(email)
+                    */
                     //NODEMAILER ENDS
                 }
             }
@@ -122,8 +129,9 @@ module.exports.upload = async function(req, res) {
         })
 
         // res.send({ status: 200, success: true, msg: "CSV Imported"})
-        
+        // console.log(req.cookies)
         return res.redirect('/admin')
+        // res.send(req.cookies)
     } catch (error) {
         console.log('Error in fileController/upload', error);
         res.status(500).send('Internal server error');
@@ -134,12 +142,16 @@ module.exports.upload = async function(req, res) {
 module.exports.view = async function(req, res) {
 
     try {
-        // console.log(req.params);
+        console.log(req.params);
+        const studData = []
+        /*
+    --------------------------------------------------
         let csvFile = await CSV.findOne({file: req.params.id});
 
         // console.log(csvFile);
         const results = [];
         const header =[];
+        
         fs.createReadStream(csvFile.filePath) //seeting up the path for file upload
         .pipe(csvParser())
         .on('headers', (headers) => {
@@ -159,8 +171,29 @@ module.exports.view = async function(req, res) {
                 length: results.length
             });
         });
-        
+    --------------------------------------------------------------
+    */
+      let data = await User.findOne({file: req.params.id})
+    //   console.log(data)
+    // Loop through each student data object and push it to studData array
+    for (var i = 0; i<data.stud_data.length; i++) {
 
+        studData[i] = data.stud_data[i];
+        // if (studentData) {
+        //     studData.push(studentData);
+        // }
+    }
+
+    // Render the EJS file passing the student data
+    res.render("file_viewer", {
+        title: "File Viewer",
+        fileName: data.file,
+        data: studData,
+        length: studData.length
+    });
+
+    // console.log(studData)
+      
     } catch (error) {
         console.log('Error in fileController/view', error);
         res.status(500).send('Internal server error');
