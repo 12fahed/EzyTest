@@ -68,8 +68,8 @@ module.exports.upload = async function(req, res) {
             for(var i = 0; i < response.length; i++) {
                 var users = [];
                 for(var j = 0; j < response[i].stud_data.length; j++) {
-                    var password = create_random_string(10);
-                    response[i].stud_data[j].password = await hashing(password);
+                    // var password = create_random_string(10);
+                    // response[i].stud_data[j].password = await hashing(password);
                     users.push(response[i].stud_data[j]);
                 }
                 userData.push({
@@ -91,10 +91,13 @@ module.exports.upload = async function(req, res) {
                     // console.log(email)
                     
                     var password = create_random_string(10)
-                    response[i].stud_data[j].password = password
+                    var hashedPassword = await hashing(password);
+                    // User.updateOne({stud_data:{email: email}}, { $set: {password: hashedPassword}})
+                    await User.updateOne({ "stud_data.email": email},{ $set: { "stud_data.$.password": hashedPassword } })
+                     
 
                     //NODEMAILER START
-                    /*
+                    
                     var html=`Hello ${(response[i].stud_data[j]).fname}, you have been successfully added to the ${response[i].insti} your Username: ${response[i].stud_data[j].email} and Password: ${password}`
             
                     var transporter = nodemailer.createTransport({
@@ -121,7 +124,7 @@ module.exports.upload = async function(req, res) {
                     }
                     });
                     // console.log(email)
-                    */
+        
                     //NODEMAILER ENDS
                 }
             }
@@ -142,7 +145,7 @@ module.exports.upload = async function(req, res) {
 module.exports.view = async function(req, res) {
 
     try {
-        console.log(req.params);
+        // console.log(req.params);
         const studData = []
         /*
     --------------------------------------------------

@@ -33,6 +33,7 @@ form {
 /* Input styles */
 input[type="email"],
 input[type="password"],
+input[type="text"],
 select {
     margin-bottom: 20px;
     padding: 12px;
@@ -45,6 +46,7 @@ select {
 
 input[type="email"]::placeholder,
 input[type="password"]::placeholder,
+input[type="text"],
 select::placeholder {
     color: #757575;
 }

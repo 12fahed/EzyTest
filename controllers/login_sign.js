@@ -49,9 +49,9 @@ module.exports.submit_login= async function(req, res) {
             const passCheck = await unHashing(req.body.password, check.password);
 
             if (check && passCheck) {
-                let file = await File.find({});
                 res.cookie('admin', check.fname)
                 res.cookie('instiKey', check.instiKey)
+                let file = await File.find({admin: check.fname});
                 return res.render('admin', { files: file, title: "Admin", adminName: check.fname, instiKey: check.instiKey});
                 // res.send(req.cookies)
             } else {
@@ -59,13 +59,31 @@ module.exports.submit_login= async function(req, res) {
             }
 
         } else if (req.body.dropdown === "Student") {
-            const check = await stud.findOne({ email: req.body.email });
-            const passCheck = await unHashing(req.body.password, check.password);
+        
+            const check = await stud.findOne({ instiKey: req.body.instikey });
 
-            if (check && passCheck) {
-                res.send("Logged in as Student");
-            } else {
-                res.send("Wrong Password");
+            if(!check){
+                res.send("Institute Doesnt Exits")
+            }
+
+            var emailFound = false
+            for(let student of check.stud_data){
+                if(student.email === req.body.email){
+                    
+                    var emailFound = true
+                    var passCheck = await unHashing(req.body.password, student.password);
+                    if(passCheck){
+                        res.send("Logged in as Student");
+                    }else{
+                        res.send("Wrong Password");
+                    }
+
+                    break;
+                }
+            }
+
+            if(!emailFound){
+                res.send("Student Doesnot Exits")
             }
 
         }
