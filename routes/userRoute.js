@@ -26,7 +26,9 @@ var storage = multer.diskStorage({
 const adminController = require('../controllers/admin_controller');
 const fileController = require('../controllers/file_controller');
 const login_sign = require('../controllers/login_sign')
-const adminQuestion= require('../controllers/adminQuestion_controller')
+const adminQuestion= require('../controllers/adminQuestion_controller');
+const studentController = require('../controllers/student_controller')
+const { db } = require('../models/csv');
 
 // const userController = require('../controllers/userController')  ///<<<<<<<<<<<<<<<<---------------TO BE TAKEN CARE OF
 
@@ -59,6 +61,14 @@ router.post('/physics', adminQuestion.physics)
 router.post('/chemistry', adminQuestion.chemistry)
 router.post('/maths', adminQuestion.maths)
 router.post('/adminQuesSub', adminQuestion.adminQuesSub)
+
+router.get('/studListOfTest', studentController.studListOfTest)
+router.get('/studDisplayQuestion/:id', studentController.displayQuestion);
+router.post('/studQuesSub', studentController.studQuesSub)
+
+router.get('/studDashboard', (req, res) =>{
+    res.render('studDashboard', {title: "Student_Dashboard"})
+})
 
 module.exports = router;
 

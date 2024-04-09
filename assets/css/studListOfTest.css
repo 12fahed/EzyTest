@@ -1,0 +1,39 @@
+/* Style for the test container */
+.test-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust column width as needed */
+    gap: 20px; /* Adjust the gap between items */
+}
+
+/* Style for each test item */
+.test {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px; /* Add border radius for rounded corners */
+    background-color: #f9f9f9; /* Set background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: all 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.test:hover {
+    transform: translateY(-5px); /* Move the test item slightly up on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+/* Style for the subject */
+.test .subject {
+    font-size: 1.2em; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    color: #333; /* Set text color */
+}
+
+/* Style for other details */
+.test div {
+    margin-bottom: 10px; /* Add some space between details */
+    color: #666; /* Set text color for other details */
+}
+
+.subject{
+    font-weight: bold;
+}

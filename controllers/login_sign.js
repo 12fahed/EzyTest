@@ -77,7 +77,8 @@ module.exports.submit_login= async function(req, res) {
                         res.cookie('studName', student.fname)
                         res.cookie('div', check.div)
                         res.cookie('instiKey', check.instiKey)
-                        res.send("Logged in as Student");
+                        res.cookie('rollNo', student.rollNo)
+                        res.render('studentLanding', {title: "student_landing"})
                     }else{
                         res.send("Wrong Password");
                     }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentQuestions</title>
+    <link rel="stylesheet" href="../css/adminQuestion.css">
+</head>
+<body>
+    
+    <h1>TEST: <%= testName %></h1>
+    <form action="/studQuesSub" method="post" id="questionForm">
+        <input type="submit" class="submit-btn" value="Submit Test">
+        <h1>QUESTIONS</h1>
+        <input type="hidden" name="studResponse" id="studResponse">
+        <% for(let quest of question){ %>
+            <div class="question">
+                <h4> Question Number: <%= quest.question_id %> </h4>
+                <h5> Question: <%= quest.question_text %> </h5>
+                <ul>
+                <% Object.keys(quest.options).forEach((option) => { %>
+                    <li> 
+                        <input type="radio" name="question<%= quest.question_id %>" value="<%= option %>" required> <%= option %> : <%= quest.options[option] %> 
+                    </li>
+                <% }); %>
+                </ul>
+            </div>
+        <% } %>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('questionForm');
+            form.addEventListener('submit', function (event) {
+                // Prevent default form submission
+                event.preventDefault();
+                
+                let selectedOptions = {};
+    
+                // Iterate through all radio buttons
+                const radioButtons = form.querySelectorAll('input[type="radio"]');
+                radioButtons.forEach(function (radio) {
+                    if (radio.checked) {
+                        const questionNumber = radio.name.replace('question', '');
+                        selectedOptions[questionNumber] = radio.value;
+                    }
+                });
+    
+                // Set the value of the hidden input field with the selected options
+                document.getElementById('studResponse').value = JSON.stringify(selectedOptions);
+    
+                // Explicitly submit the form
+                form.submit();
+            });
+        });
+    </script>
+    
+
+</body>
+</html>
