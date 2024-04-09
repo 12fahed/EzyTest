@@ -97,7 +97,7 @@ module.exports.upload = async function(req, res) {
                      
 
                     //NODEMAILER START
-                    
+                    /*
                     var html=`Hello ${(response[i].stud_data[j]).fname}, you have been successfully added to the ${response[i].insti} your Username: ${response[i].stud_data[j].email} and Password: ${password}`
             
                     var transporter = nodemailer.createTransport({
@@ -124,7 +124,7 @@ module.exports.upload = async function(req, res) {
                     }
                     });
                     // console.log(email)
-        
+                    */
                     //NODEMAILER ENDS
                 }
             }

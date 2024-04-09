@@ -1,0 +1,193 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #aaa9a9;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h3 {
+    color: #d6d6d6;
+}
+
+a {
+    color: #d6d6d6;
+    text-decoration: none;
+}
+
+.question {
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+}
+
+h4 {
+    font-size: 20px;
+    color: #fff;
+    margin-top: 0;
+}
+
+h5 {
+    font-size: 18px;
+    color: aliceblue ;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+p {
+    font-style: italic;
+    color: #989797;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+    margin: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #989797;
+}
+
+.submit-btn {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+}
+
+/* CSS for testInfo class */
+.testInfo {
+    margin: 20px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: grid; /* Use CSS grid for layout */
+    grid-template-columns: repeat(2, 1fr); /* Create two columns with equal width */
+    grid-gap: 10px; /* Add gap between grid items */
+}
+
+.testInfo h2 {
+    margin-bottom: 10px;
+    color: #fff;
+    grid-column: 1 / -1; /* Span across all columns */
+}
+
+.testInfo label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.testInfo input[type="number"],
+.testInfo input[type="date"],
+.testInfo input[type="time"] {
+    width: 100%; /* Take up full width of the column */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #d6d6d6;
+}
+
+.testInfo input[type="number"]:focus,
+.testInfo input[type="date"]:focus,
+.testInfo input[type="time"]:focus {
+    border-color: #fff; /* Update border color on focus */
+    outline: none;
+}
+
+/* Update color for input placeholders */
+.testInfo ::placeholder {
+    color: #ccc;
+}
+
+/* CSS for divisions */
+.testInfo .divisions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.testInfo button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    border: #d6d6d6 solid;
+}
+
+.testInfo button:hover {
+    background-color: #989797;
+}
+
+.testInfo button span {
+    margin-left: 5px;
+}
+
+.testInfo button:focus {
+    outline: none;
+}
+
+.testInfo button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.testInfo button:disabled:hover {
+    background-color: #ccc;
+}
+
+.testInfo button.pressed {
+    background-color: #989797; /* Change to the pressed color */
+    color: #333; /* Change text color for better visibility */
+}
+
+

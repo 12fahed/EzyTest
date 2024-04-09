@@ -52,7 +52,8 @@ module.exports.submit_login= async function(req, res) {
                 res.cookie('admin', check.fname)
                 res.cookie('instiKey', check.instiKey)
                 let file = await File.find({admin: check.fname});
-                return res.render('admin', { files: file, title: "Admin", adminName: check.fname, instiKey: check.instiKey});
+                // return res.render('admin', { files: file, title: "Admin", adminName: check.fname, instiKey: check.instiKey});
+                return res.render('adminLanding', {title: "adminLanding"})
                 // res.send(req.cookies)
             } else {
                 res.send("Wrong Password");
@@ -73,6 +74,9 @@ module.exports.submit_login= async function(req, res) {
                     var emailFound = true
                     var passCheck = await unHashing(req.body.password, student.password);
                     if(passCheck){
+                        res.cookie('studName', student.fname)
+                        res.cookie('div', check.div)
+                        res.cookie('instiKey', check.instiKey)
                         res.send("Logged in as Student");
                     }else{
                         res.send("Wrong Password");

@@ -26,6 +26,8 @@ var storage = multer.diskStorage({
 const adminController = require('../controllers/admin_controller');
 const fileController = require('../controllers/file_controller');
 const login_sign = require('../controllers/login_sign')
+const adminQuestion= require('../controllers/adminQuestion_controller')
+
 // const userController = require('../controllers/userController')  ///<<<<<<<<<<<<<<<<---------------TO BE TAKEN CARE OF
 
 var upload = multer({ storage: storage })
@@ -44,6 +46,19 @@ router.get('/admin', adminController.admin)
 router.post('/upload', upload.single('file') ,fileController.upload);
 router.get('/view/:id', fileController.view);
 router.get('/delete/:id', fileController.delete);
+
+router.get('/questionLanding', (req, res) =>{
+    res.render('questionLanding', {title: "question_Landing"})
+})
+
+router.get('/admin', (req, res) =>{
+    res.render('admin')
+})
+
+router.post('/physics', adminQuestion.physics)
+router.post('/chemistry', adminQuestion.chemistry)
+router.post('/maths', adminQuestion.maths)
+router.post('/adminQuesSub', adminQuestion.adminQuesSub)
 
 module.exports = router;
 
