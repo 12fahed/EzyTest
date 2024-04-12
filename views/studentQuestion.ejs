@@ -9,6 +9,7 @@
 <body>
     
     <h1>TEST: <%= testName %></h1>
+    <h5 id="timeout"><%=duration%><h5></h5>
     <form action="/studQuesSub" method="post" id="questionForm">
         <input type="submit" class="submit-btn" value="Submit Test">
         <h1>QUESTIONS</h1>
@@ -58,7 +59,7 @@
         });
 
         //for timer
-        const timeLimit = 20; // 5 minutes (300 seconds)
+        const timeLimit = (document.getElementById('timeout').innerHTML)*60; // 5 minutes (300 seconds)
 
         // Function to display the timer
         function displayTimer(seconds) {
