@@ -9,6 +9,7 @@
 <body>
     
     <h1>TEST: <%= testName %></h1>
+    <h5 id="timeout"><%=duration%><h5></h5>
     <form action="/studQuesSub" method="post" id="questionForm">
         <input type="submit" class="submit-btn" value="Submit Test">
         <h1>QUESTIONS</h1>
@@ -58,47 +59,47 @@
         });
 
         //for timer
-        const timeLimit = 20; // 5 minutes (300 seconds)
+        const timeLimit = (document.getElementById('timeout').innerHTML)*60; // 5 minutes (300 seconds)
 
-// Function to display the timer
-function displayTimer(seconds) {
-  const timerElement = document.getElementById('timer');
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  timerElement.textContent = `Time left: ${minutes} minute${minutes !== 1 ? 's' : ''} and ${remainingSeconds} second${remainingSeconds !== 1 ? 's' : ''}`;
-}
+        // Function to display the timer
+        function displayTimer(seconds) {
+        const timerElement = document.getElementById('timer');
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        timerElement.textContent = `Time left: ${minutes} minute${minutes !== 1 ? 's' : ''} and ${remainingSeconds} second${remainingSeconds !== 1 ? 's' : ''}`;
+        }
 
-// Function to submit the form
-function submitForm() {
-    let selectedOptions = {};
-    
-                // Iterate through all radio buttons
-                const radioButtons = form.querySelectorAll('input[type="radio"]');
-                radioButtons.forEach(function (radio) {
-                    if (radio.checked) {
-                        const questionNumber = radio.name.replace('question', '');
-                        selectedOptions[questionNumber] = radio.value;
-                    }
-                });
-    
-                // Set the value of the hidden input field with the selected options
-                document.getElementById('studResponse').value = JSON.stringify(selectedOptions);
-  form.submit();
-}
+        // Function to submit the form
+        function submitForm() {
+            let selectedOptions = {};
+            
+                        // Iterate through all radio buttons
+                        const radioButtons = form.querySelectorAll('input[type="radio"]');
+                        radioButtons.forEach(function (radio) {
+                            if (radio.checked) {
+                                const questionNumber = radio.name.replace('question', '');
+                                selectedOptions[questionNumber] = radio.value;
+                            }
+                        });
+            
+                        // Set the value of the hidden input field with the selected options
+                        document.getElementById('studResponse').value = JSON.stringify(selectedOptions);
+        form.submit();
+        }
 
-// Countdown timer
-let secondsRemaining = timeLimit;
-displayTimer(secondsRemaining);
-const timerInterval = setInterval(() => {
-  secondsRemaining--;
-  displayTimer(secondsRemaining);
-  
-  // If time is up, submit the form and stop the timer
-  if (secondsRemaining <= 0) {
-    submitForm();
-    clearInterval(timerInterval);
-  }
-}, 1000);
+        // Countdown timer
+        let secondsRemaining = timeLimit;
+        displayTimer(secondsRemaining);
+        const timerInterval = setInterval(() => {
+        secondsRemaining--;
+        displayTimer(secondsRemaining);
+        
+        // If time is up, submit the form and stop the timer
+        if (secondsRemaining <= 0) {
+            submitForm();
+            clearInterval(timerInterval);
+        }
+        }, 1000);
     </script>
     
 
