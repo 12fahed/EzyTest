@@ -70,6 +70,19 @@ function displayTimer(seconds) {
 
 // Function to submit the form
 function submitForm() {
+    let selectedOptions = {};
+    
+                // Iterate through all radio buttons
+                const radioButtons = form.querySelectorAll('input[type="radio"]');
+                radioButtons.forEach(function (radio) {
+                    if (radio.checked) {
+                        const questionNumber = radio.name.replace('question', '');
+                        selectedOptions[questionNumber] = radio.value;
+                    }
+                });
+    
+                // Set the value of the hidden input field with the selected options
+                document.getElementById('studResponse').value = JSON.stringify(selectedOptions);
   form.submit();
 }
 
