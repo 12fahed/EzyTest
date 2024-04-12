@@ -64,7 +64,10 @@ module.exports.submit_login= async function(req, res) {
             const check = await stud.findOne({ instiKey: req.body.instikey });
 
             if(!check){
-                res.send("Institute Doesnt Exits")
+                // res.send("Institute Doesnt Exits")
+                res.render('invInstikey', {
+                    title: "Login"
+                });
             }
 
             var emailFound = false

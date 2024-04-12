@@ -28,9 +28,12 @@
         <% } %>
     </form>
 
+    <div id="timer"></div>
+
     <script>
+        const form = document.getElementById('questionForm');
         document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('questionForm');
+            
             form.addEventListener('submit', function (event) {
                 // Prevent default form submission
                 event.preventDefault();
@@ -53,6 +56,36 @@
                 form.submit();
             });
         });
+
+        //for timer
+        const timeLimit = 20; // 5 minutes (300 seconds)
+
+// Function to display the timer
+function displayTimer(seconds) {
+  const timerElement = document.getElementById('timer');
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  timerElement.textContent = `Time left: ${minutes} minute${minutes !== 1 ? 's' : ''} and ${remainingSeconds} second${remainingSeconds !== 1 ? 's' : ''}`;
+}
+
+// Function to submit the form
+function submitForm() {
+  form.submit();
+}
+
+// Countdown timer
+let secondsRemaining = timeLimit;
+displayTimer(secondsRemaining);
+const timerInterval = setInterval(() => {
+  secondsRemaining--;
+  displayTimer(secondsRemaining);
+  
+  // If time is up, submit the form and stop the timer
+  if (secondsRemaining <= 0) {
+    submitForm();
+    clearInterval(timerInterval);
+  }
+}, 1000);
     </script>
     
 
