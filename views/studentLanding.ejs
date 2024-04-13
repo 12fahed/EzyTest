@@ -1,2 +1,36 @@
-<a href="/studListOfTest"><button>Attempt Test</button></a>
-<a href="/studDashboard"><button>View Past Test Result</button></a>
+<style>
+    /* Button Styles */
+.enhanced-button {
+    padding: 12px 24px;
+    margin: 12px;
+    background-color: #333; /* Dark grey */
+    color: #fff; /* White */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Animation - Hover effect */
+.enhanced-button:hover {
+    background-color: #555; /* Medium grey on hover */
+    color: #f0f0f0; /* Lighter color on hover */
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+/* Animation - Focus effect */
+.enhanced-button:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* White glow effect */
+}
+
+</style>
+
+<a href="/studListOfTest">
+    <button class="enhanced-button">Attempt Test</button>
+</a>
+<a href="/studDashboard">
+    <button class="enhanced-button">View Past Test Result</button>
+</a>

@@ -74,7 +74,7 @@ module.exports.studQuesSub = async function(req, res) {
 
     collection.insertOne({instiKey: instiKey, div: div, studName: studName, rollNo: rollNo, questPaperId: questPaperId, marks: marks, response: response})
 
-    res.render('studResult', {title: "Result", question: question, response: response});
+    res.render('studResult', {title: "Result", question: question, response: response, marks: marks});
   } catch (error) {
     console.error("Error processing response:", error);
     res.status(400).send("Invalid data received");
