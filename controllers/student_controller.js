@@ -42,7 +42,7 @@ module.exports.displayQuestion = async function(req, res){
   const testName = data.TestName
   const question = data.jsonData.questions
   res.cookie('questPaperId', req.params.id)
-  res.render('studentQuestion', {title: "Test", question: question,duration:data.Duration, testName: testName})
+  res.render('studentQuestion', {title: "Test", question: question, duration:data.Duration, testName: testName})
   // res.send(question)
 }
 

@@ -5,6 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudentQuestions</title>
     <link rel="stylesheet" href="../css/adminQuestion.css">
+    <style>
+        /* Modal styles */
+    /* Modal styles */
+    /* Modal styles */
+    .modal {
+        display: none; /* Initially hidden */
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px); /* This is the blur effect on the modal background */
+    }
+
+    /* Modal content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%; /* Adjust width as needed */
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Close button */
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* Hover styles for close button */
+    .close-button:hover,
+    .close-button:focus {
+        color: black;
+        text-decoration: none;
+    }
+
+    .no-scroll {
+        overflow: hidden;
+    }
+
+    </style>
 </head>
 <body>
     
@@ -29,12 +77,96 @@
         <% } %>
     </form>
 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Welcome to the Test</h2>
+            <p>Please read the instructions carefully before starting the test.</p>
+            <button id="startTestBtn">Start Test</button>
+        </div>
+    </div>
+
+
+
     <div id="timer"></div>
 
     <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const modal = document.getElementById('myModal');
+            const closeButton = document.querySelector('.close-button');
+            const startTestBtn = document.getElementById('startTestBtn');
+
+    
+            const body = document.body;
+
+            function showModal() {
+                modal.style.display = 'block';
+                body.classList.add('no-scroll');
+            }
+
+   
+            function hideModal() {
+                modal.style.display = 'none';
+                body.classList.remove('no-scroll');
+            }
+
+       
+            showModal();
+
+            closeButton.addEventListener('click', function() {
+                alert("Click on 'Start' Test to Begin Test")
+            });
+
+
+            startTestBtn.addEventListener('click', function() {
+
+                hideModal();
+
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+
+                //for timer
+                const timeLimit = (document.getElementById('timeout').innerHTML)*60; // 5 minutes (300 seconds)
+
+                // Function to display the timer
+                function displayTimer(seconds) {
+                const timerElement = document.getElementById('timer');
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                timerElement.textContent = `Time left: ${minutes} minute${minutes !== 1 ? 's' : ''} and ${remainingSeconds} second${remainingSeconds !== 1 ? 's' : ''}`;
+                }
+
+                // Countdown timer
+                let secondsRemaining = timeLimit;
+                displayTimer(secondsRemaining);
+                const timerInterval = setInterval(() => {
+                secondsRemaining--;
+                displayTimer(secondsRemaining);
+                
+                // If time is up, submit the form and stop the timer
+                if (secondsRemaining <= 0) {
+                    submitForm();
+                    clearInterval(timerInterval);
+                }
+                }, 1000);
+
+            });
+        });
+
+
         const form = document.getElementById('questionForm');
         document.addEventListener('DOMContentLoaded', function () {
-            
+
             form.addEventListener('submit', function (event) {
                 // Prevent default form submission
                 event.preventDefault();
@@ -58,48 +190,31 @@
             });
         });
 
-        //for timer
-        const timeLimit = (document.getElementById('timeout').innerHTML)*60; // 5 minutes (300 seconds)
-
-        // Function to display the timer
-        function displayTimer(seconds) {
-        const timerElement = document.getElementById('timer');
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        timerElement.textContent = `Time left: ${minutes} minute${minutes !== 1 ? 's' : ''} and ${remainingSeconds} second${remainingSeconds !== 1 ? 's' : ''}`;
-        }
-
         // Function to submit the form
         function submitForm() {
             let selectedOptions = {};
             
-                        // Iterate through all radio buttons
-                        const radioButtons = form.querySelectorAll('input[type="radio"]');
-                        radioButtons.forEach(function (radio) {
-                            if (radio.checked) {
-                                const questionNumber = radio.name.replace('question', '');
-                                selectedOptions[questionNumber] = radio.value;
-                            }
-                        });
+            // Iterate through all radio buttons
+            const radioButtons = form.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(function (radio) {
+                if (radio.checked) {
+                    const questionNumber = radio.name.replace('question', '');
+                    selectedOptions[questionNumber] = radio.value;
+                }
+            });
             
-                        // Set the value of the hidden input field with the selected options
-                        document.getElementById('studResponse').value = JSON.stringify(selectedOptions);
-        form.submit();
+            // Set the value of the hidden input field with the selected options
+            document.getElementById('studResponse').value = JSON.stringify(selectedOptions);
+                form.submit();
         }
 
-        // Countdown timer
-        let secondsRemaining = timeLimit;
-        displayTimer(secondsRemaining);
-        const timerInterval = setInterval(() => {
-        secondsRemaining--;
-        displayTimer(secondsRemaining);
-        
-        // If time is up, submit the form and stop the timer
-        if (secondsRemaining <= 0) {
-            submitForm();
-            clearInterval(timerInterval);
-        }
-        }, 1000);
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement) {
+                submitForm()
+            }
+        });
+
+
     </script>
     
 
