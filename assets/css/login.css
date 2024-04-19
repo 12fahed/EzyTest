@@ -19,7 +19,7 @@ body {
 main {
     background-color: #424242;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 40px;
     width: 300px;
 }
@@ -37,7 +37,7 @@ input[type="text"],
 select {
     margin-bottom: 20px;
     padding: 12px;
-    border: 1px solid #757575;
+    border: 1px solid #073B7B; /* Use the primary color for borders */
     border-radius: 6px;
     font-size: 16px;
     background-color: #212121;
@@ -46,14 +46,14 @@ select {
 
 input[type="email"]::placeholder,
 input[type="password"]::placeholder,
-input[type="text"],
+input[type="text"]::placeholder,
 select::placeholder {
     color: #757575;
 }
 
 /* Submit button styles */
 input[type="submit"] {
-    background-color: #007bff;
+    background-color: #073B7B; /* Use primary color */
     color: #ffffff;
     border: none;
     border-radius: 6px;
@@ -64,12 +64,12 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #051f4b; /* Darker shade of primary color */
 }
 
 /* Create account button styles */
 a button {
-    background-color: #28a745;
+    background-color: #073B7B; /* Use primary color */
     color: #ffffff;
     border: none;
     border-radius: 6px;
@@ -81,10 +81,9 @@ a button {
 }
 
 a button:hover {
-    background-color: #218838;
+    background-color: #051f4b; /* Darker shade of primary color */
 }
 
 #wrong::placeholder {  
-        color: red; 
- } 
-    
+    color: red; 
+}

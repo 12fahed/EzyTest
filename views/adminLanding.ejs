@@ -3,34 +3,36 @@
     .monochrome-button {
         padding: 10px 20px;
         margin: 10px;
-        background-color: #333333; /* Dark grey */
-        color: white;
+        background-color: #073B7B; /* Dark blue background from color scheme */
+        color: white; /* White text for contrast */
         border: none;
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
     }
-
+    
     /* Animation - Hover effect */
     .monochrome-button:hover {
-        background-color: #4a4a4a; /* Slightly lighter grey on hover */
+        background-color: #63ABFD; /* Bright blue background for hover effect */
         transform: scale(1.05); /* Slightly enlarges the button */
+        color: #073B7B; /* Change text color to dark blue for contrast */
     }
-
+    
     /* Animation - Focus effect */
     .monochrome-button:focus {
         outline: none;
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* White shadow */
+        box-shadow: 0 0 5px rgba(99, 171, 253, 0.5); /* Bright blue shadow */
     }
-
-
+    
 </style>
 
 <a href="/questionLanding">
     <button class="monochrome-button">Start a Test</button>
 </a>
 <a href="/admin">
-    <button class="monochrome-button">View Student History</button>
+    <button class="monochrome-button">View Class Details</button>
 </a>
-
+<a href="/adminTestRecord">
+    <button class="monochrome-button">View Test Records</button>
+</a>

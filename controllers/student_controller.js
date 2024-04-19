@@ -72,10 +72,33 @@ module.exports.studQuesSub = async function(req, res) {
       }
     }
 
-    collection.insertOne({instiKey: instiKey, div: div, studName: studName, rollNo: rollNo, questPaperId: questPaperId, marks: marks, response: response})
+    collection.insertOne({testName: questionData.TestName, instiKey: instiKey, div: div, studName: studName, rollNo: rollNo, questPaperId: questPaperId, marks: marks, response: response})
 
     res.render('studResult', {title: "Result", question: question, response: response, marks: marks});
   } catch (error) {
+    console.error("Error processing response:", error);
+    res.status(400).send("Invalid data received");
+  }
+}
+
+module.exports.studDashboard = async function(req, res) {
+  try{
+    const collection = client.db(databaseName).collection("stud_response")
+    const instiKey = req.cookies.instiKey
+    const div = req.cookies.div
+    const studName = req.cookies.studName
+    const rollNo = req.cookies.rollNo
+
+    const cursor = collection.find({instiKey: instiKey, div: div, studName: studName, rollNo: rollNo});
+    const studResponses = await cursor.toArray();
+
+    // studResponses.forEach(response => {
+    //   console.log(response.questPaperId);
+    // });
+
+    res.render('studDashboard', {title: "studendt_Dashboard", tests: studResponses})
+
+  } catch (error){
     console.error("Error processing response:", error);
     res.status(400).send("Invalid data received");
   }

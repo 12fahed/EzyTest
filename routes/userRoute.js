@@ -66,9 +66,9 @@ router.get('/studListOfTest', studentController.studListOfTest)
 router.get('/studDisplayQuestion/:id', studentController.displayQuestion);
 router.post('/studQuesSub', studentController.studQuesSub)
 
-router.get('/studDashboard', (req, res) =>{
-    res.render('studDashboard', {title: "Student_Dashboard"})
-})
+router.get('/studDashboard', studentController.studDashboard)
+
+router.get('/adminTestRecord', adminController.adminTestRecord)
 
 module.exports = router;
 

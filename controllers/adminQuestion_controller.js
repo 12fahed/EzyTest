@@ -4,6 +4,7 @@ const { MongoClient } = require('mongodb')
 const bodyParser = require('body-parser');
 const { Console } = require('console');
 const cookieParser = require('cookie-parser');
+const nodemailer = require('nodemailer');
 const app = express();
 app.use(cookieParser())
 
@@ -108,9 +109,10 @@ module.exports.maths= async function(req, res){
 module.exports.adminQuesSub = async function(req, res){
   try {
     const collection = client.db(databaseName).collection("questions")
+    const student = client.db(databaseName).collection("stud_infos")
     const fileName = req.body.fileName
 
-    fs.readFile("./public/jsonFiles/"+fileName+'.json', 'utf8', (err, data) => {
+    fs.readFile("./public/jsonFiles/"+fileName+'.json', 'utf8', async (err, data) => {
       if (err) {
         console.error('Error reading JSON file:', err);
         res.status(500).send('Internal Server Error');
@@ -127,7 +129,49 @@ module.exports.adminQuesSub = async function(req, res){
 
       collection.insertOne({TestName: req.body.fileName, questPaperId: questPaperId, instiKey: req.cookies.instiKey, Div: selectedDivisions, Duration: duration, Date: date, Time: time, Marks: marks, jsonData}) ;
 
-      res.status(200).send("Data inserted successfully");
+      // console.log(selectedDivisions)
+      for(let i=0; i<selectedDivisions.length; i++){
+
+        const cursor = student.find({instiKey: req.cookies.instiKey, div: selectedDivisions[i]});
+        const studData = await cursor.toArray();
+        // console.log(studData)
+
+        for(let data of studData){
+          for(let studentt of data.stud_data){
+            //NODEMAILER START
+            var html=`Your ${req.body.fileName} Test is Scheduled on ${date} at ${time} for Marks ${marks}.`     
+            var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'ezyTestNotify@gmail.com',
+                pass: 'hnqkmlfvxokcsleo'
+            }
+            });
+                
+            var mailOptions = {
+            from: ' "EzyTEST" <ezyTestNotifygmail.com>',
+            to: studentt.email,
+            subject: 'Test is Scheduled',
+            // text: 'Hello and Welcome to Educare, your key',
+            html: html
+            };
+                
+            transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                // console.log('Email sent: ' + info.response);
+            }
+            });
+            // console.log(email)          
+            //NODEMAILER ENDS
+          }
+        }
+
+      }
+
+
+      res.render('adminLanding', {title: "adminLanding"})
     });
   
 

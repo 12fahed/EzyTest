@@ -1,1 +1,14 @@
-<p>Student Dashboard</p>
+<link rel="stylesheet" href="../css/studDashboard.css">
+
+<div class="student-dashboard">
+    <p>Student Dashboard</p>
+    <div class="test-grid">
+      <% for (let test of tests) { %>
+        <div class="test-block">
+          <h3><%= test.testName %></h3>
+          <p><%= test.marks %></p>
+        </div>
+      <% } %>
+    </div>
+</div>
+  

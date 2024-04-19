@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="../css/adminTestRecord.css">
+
+<p>Admin Can View the Test Active and Students Appeared tests</p>
+
+<div class="test-grid">
+    <% for(let test of tests){ %>
+        <div class="test-block">
+            <h4>Test Name: <%= test.TestName %></h4>
+            <h4>Division: <%= test.Div %></h4>
+            <h4>Date: <%= test.Date %></h4>
+            <h4>Duration: <%= test.duration %></h4>
+            <h4>Time: <%= test.Time %></h4>
+            <h4>Marks: <%= test.Marks %></h4>
+            <h4>Questions: <%= test.jsonData.questions.length %></h4>
+        </div>
+    <% } %>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Test</th>
+            <th>Marks Scored</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let student of students){ %>
+            <tr>
+                <td><%= student.rollNo %></td>
+                <td><%= student.studName %></td>
+                <td><%= student.div %></td>
+                <td><%= student.testName %></td>
+                <td><%= student.marks %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+
+
+
+
+
