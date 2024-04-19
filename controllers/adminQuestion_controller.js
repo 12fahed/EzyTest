@@ -139,7 +139,13 @@ module.exports.adminQuesSub = async function(req, res){
         for(let data of studData){
           for(let studentt of data.stud_data){
             //NODEMAILER START
-            var html=`Your ${req.body.fileName} Test is Scheduled on ${date} at ${time} for Marks ${marks}.`     
+            var html = `
+                <div style="font-family: Arial, sans-serif; line-height: 1.5; padding: 10px; color: #000;">
+                    <h2 style="color: #073B7B; margin-bottom: 10px;">Test Scheduled</h2>
+                    <p style="font-size: 14px;">Your test <strong>${req.body.fileName}</strong> is scheduled on <strong>${date}</strong> at <strong>${time}</strong> for marks: <strong>${marks}</strong>.</p>
+                    <p style="font-size: 12px; color: #555;">If you have any questions, feel free to reach out.</p>
+                </div>
+            `;     
             var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {

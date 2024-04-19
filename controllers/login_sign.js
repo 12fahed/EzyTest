@@ -152,7 +152,23 @@ module.exports.submit_sign = async function(req, res) {
             await admin.insertMany([data])
 
             //NODEMAILER START
-            var html=`Hello ${fname}, You are receiving this email as an acknowledgement that you have created an Institute Account with name ${insti}, your key is ${instiKey}`
+            var html = `
+                <div style="font-family: Arial, sans-serif; line-height: 1.5; padding: 20px;">
+                    <h2 style="color: #073B7B; margin-bottom: 15px;">Welcome to EzyTest!</h2>
+                    <p style="font-size: 14px;">
+                        Hello <strong>${fname}</strong>,
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 10px;">
+                        You are receiving this email as an acknowledgement that you have created an Institute Account with the name <strong>${insti}</strong>.
+                    </p>
+                    <p style="font-size: 14px; margin-bottom: 20px;">
+                        Your account key is: <strong>${instiKey}</strong>.
+                    </p>
+                    <p style="font-size: 12px; color: #555;">
+                        Thank you for choosing EzyTest. If you have any questions, feel free to contact us.
+                    </p>
+                </div>
+            `;
 
             var nodemailer = require('nodemailer');
 

@@ -98,7 +98,25 @@ module.exports.upload = async function(req, res) {
 
                     //NODEMAILER START
                 
-                    var html=`Hello ${(response[i].stud_data[j]).fname}, you have been successfully added to the ${response[i].insti} your Username: ${response[i].stud_data[j].email} and Password: ${password} and Institute Key: ${req.cookies.instiKey}`
+                    var html = `
+                        <div style="font-family: Arial, sans-serif; line-height: 1.5; padding: 20px;">
+                            <h2 style="color: #073B7B; margin-bottom: 15px;">Welcome to ${response[i].insti}!</h2>
+                            <p style="font-size: 14px;">
+                                Hello <strong>${(response[i].stud_data[j]).fname}</strong>,
+                            </p>
+                            <p style="font-size: 14px; margin-bottom: 10px;">
+                                You have been successfully added to the institute.
+                            </p>
+                            <p style="font-size: 14px; margin-bottom: 20px;">
+                                <strong>Username:</strong> ${response[i].stud_data[j].email}<br>
+                                <strong>Password:</strong> ${password}<br>
+                                <strong>Institute Key:</strong> ${req.cookies.instiKey}
+                            </p>
+                            <p style="font-size: 12px; color: #555;">
+                                Please keep your login credentials safe and do not share them with others.
+                            </p>
+                        </div>
+                    `;
             
                     var transporter = nodemailer.createTransport({
                     service: 'gmail',

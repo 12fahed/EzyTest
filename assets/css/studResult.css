@@ -27,3 +27,22 @@
 .result_bg_green {
     background-color: #a5f1b6; /* Green shade */
 }
+#downloadButton {
+    /* Apply the color scheme */
+    background-color: #073B7B;
+    color: white;
+
+    /* Style the button */
+    padding: 10px 20px; /* Add padding for better size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Add a slight border radius */
+    font-size: 16px; /* Increase the font size */
+    cursor: pointer; /* Add cursor pointer effect */
+    transition: background-color 0.3s; /* Add transition for hover effect */
+    text-align: center; /* Center-align the text */
+}
+
+#downloadButton:hover {
+    /* Change background color on hover */
+    background-color: #0A529C;
+}

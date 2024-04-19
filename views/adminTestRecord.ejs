@@ -16,28 +16,40 @@
     <% } %>
 </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Roll No</th>
-            <th>Name</th>
-            <th>Class</th>
-            <th>Test</th>
-            <th>Marks Scored</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for(let student of students){ %>
+<button id="downloadButton">Download as PDF</button>
+<div class="container">
+    <table>
+        <thead>
             <tr>
-                <td><%= student.rollNo %></td>
-                <td><%= student.studName %></td>
-                <td><%= student.div %></td>
-                <td><%= student.testName %></td>
-                <td><%= student.marks %></td>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Test</th>
+                <th>Marks Scored</th>
             </tr>
-        <% } %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% for(let student of students){ %>
+                <tr>
+                    <td><%= student.rollNo %></td>
+                    <td><%= student.studName %></td>
+                    <td><%= student.div %></td>
+                    <td><%= student.testName %></td>
+                    <td><%= student.marks %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+        const resumeContainer = document.querySelector('.container');
+        html2pdf(resumeContainer);
+    });
+</script>
 
 
 

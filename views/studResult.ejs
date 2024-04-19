@@ -1,24 +1,35 @@
 <link rel="stylesheet" href="../css/studResult.css">
-
-<div class="tablular">
-    <h1>Marks Obtained: <%= marks %>/10</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Question No</th>
-                <th>Your Response</th>
-                <th>Correct Response</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(var i = 0; i < question.length; i++) { %>
-                <% let result_bg = (response[i + 1] === question[i].correct_options[0]) ? 'result_bg_green' : 'result_bg_red'; %>
-                <tr class="<%= result_bg %>">
-                    <td><%= i + 1 %></td>
-                    <td><%= response[i + 1] %></td>
-                    <td><%= question[i].correct_options[0] %></td>
+<button id="downloadButton">Download as PDF</button>
+<div class="container">
+    <div class="tablular">
+        <h1>Marks Obtained: <%= marks %>/10</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Question No</th>
+                    <th>Your Response</th>
+                    <th>Correct Response</th>
                 </tr>
-            <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% for(var i = 0; i < question.length; i++) { %>
+                    <% let result_bg = (response[i + 1] === question[i].correct_options[0]) ? 'result_bg_green' : 'result_bg_red'; %>
+                    <tr class="<%= result_bg %>">
+                        <td><%= i + 1 %></td>
+                        <td><%= response[i + 1] %></td>
+                        <td><%= question[i].correct_options[0] %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+        const resumeContainer = document.querySelector('.container');
+        html2pdf(resumeContainer);
+    });
+</script>
+    
