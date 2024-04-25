@@ -199,7 +199,7 @@ module.exports.submit_sign = async function(req, res) {
             //NODEMAILER ENDS
 
             let file = await File.find({});
-            return res.render('admin', { files: file, title: "Admin"});
+            return res.render('admin', { files: file, title: "Admin", admin: fname});
         }
         else{
             res.send("Mistach Password")
