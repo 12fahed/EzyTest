@@ -1,50 +1,48 @@
+/* Student Dashboard Styles */
 .student-dashboard {
-    /* Center the dashboard and give it some padding */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Title styling */
-  .student-dashboard > p {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #2c3e50;
-  }
-  
-  /* Grid layout for tests */
-  .test-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-  
-  /* Test block styles */
-  .test-block {
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  /* Animation effect on hover */
-  .test-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Test name styling */
-  .test-block > h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #34495e;
-  }
-  
-  /* Test marks styling */
-  .test-block > p {
-    font-size: 1.25rem;
-    color: #7f8c8d;
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.student-dashboard > p {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #2c3e50; /* Dark Gray */
+}
+
+/* Test Grid Layout */
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Test Block Styles */
+.test-block {
+  background-color: #ecf0f1; /* Light Gray */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Animation Effect on Hover */
+.test-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Test Name Styling */
+.test-block h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #34495e; /* Dark Blue */
+}
+
+/* Test Marks Styling */
+.test-block p {
+  font-size: 1.25rem;
+  color: #7f8c8d; /* Gray */
+}

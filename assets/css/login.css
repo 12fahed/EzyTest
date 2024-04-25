@@ -8,7 +8,7 @@
 /* Body styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #303030;
+    background-color: #f0f0f0; /* Light gray background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,11 +17,17 @@ body {
 
 /* Main container styles */
 main {
-    background-color: #424242;
+    background-color: #ffffff; /* White background */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
     padding: 40px;
     width: 300px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Main container hover effect */
+main:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
 }
 
 /* Form styles */
@@ -37,39 +43,47 @@ input[type="text"],
 select {
     margin-bottom: 20px;
     padding: 12px;
-    border: 1px solid #073B7B; /* Use the primary color for borders */
+    border: 1px solid #dddddd; /* Light gray border */
     border-radius: 6px;
     font-size: 16px;
-    background-color: #212121;
-    color: #ffffff;
+    background-color: #f9f9f9; /* Light gray background */
+    color: #333333; /* Dark gray text */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Input hover effect */
+input:hover,
+select:hover {
+    border-color: #aaaaaa; /* Darker gray border on hover */
 }
 
 input[type="email"]::placeholder,
 input[type="password"]::placeholder,
 input[type="text"]::placeholder,
 select::placeholder {
-    color: #757575;
+    color: #aaaaaa; /* Light gray placeholder text */
 }
 
 /* Submit button styles */
 input[type="submit"] {
-    background-color: #073B7B; /* Use primary color */
+    background-color: #073B7B; /* Dark blue button */
     color: #ffffff;
     border: none;
     border-radius: 6px;
     padding: 12px 20px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
+/* Submit button hover effect */
 input[type="submit"]:hover {
-    background-color: #051f4b; /* Darker shade of primary color */
+    background-color: #051f4b; /* Darker shade of blue on hover */
 }
 
 /* Create account button styles */
 a button {
-    background-color: #073B7B; /* Use primary color */
+    background-color: #8c8c8c; /* Gray button */
     color: #ffffff;
     border: none;
     border-radius: 6px;
@@ -77,13 +91,15 @@ a button {
     cursor: pointer;
     font-size: 16px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
+/* Create account button hover effect */
 a button:hover {
-    background-color: #051f4b; /* Darker shade of primary color */
+    background-color: #666666; /* Darker shade of gray on hover */
 }
 
+/* Placeholder color for wrong input */
 #wrong::placeholder {  
     color: red; 
 }
