@@ -155,7 +155,7 @@ module.exports.upload = async function(req, res) {
         // res.send(req.cookies)
     } catch (error) {
         console.log('Error in fileController/upload', error);
-        res.status(500).send('Internal server error in Upload the students');
+        res.status(500).send('Internal server error');
     }
 }
 
@@ -217,7 +217,7 @@ module.exports.view = async function(req, res) {
       
     } catch (error) {
         console.log('Error in fileController/view', error);
-        res.status(500).send('Internal server error In view');
+        res.status(500).send('Internal server error');
     }
 }
 

@@ -54,7 +54,7 @@ module.exports.physics = async function(req, res){
     fs.readFile('./public/jsonFiles/physics.json', 'utf8', async (err, data) => {
       if (err) {
         console.error('Error reading JSON file:', err);
-        res.status(500).send('Internal Server Error In Physics Questions Read');
+        res.status(500).send('Internal Server Error');
         return;
       }
       
@@ -64,7 +64,7 @@ module.exports.physics = async function(req, res){
     });
   } catch (err) {
     console.error("Error:", err);
-    res.status(500).send("Internal Server Error In Physics Questions Exports");
+    res.status(500).send("Internal Server Error");
   }
 }
 
@@ -73,7 +73,7 @@ module.exports.chemistry = async function(req, res){
     fs.readFile('./public/jsonFiles/chemistry.json', 'utf8', async (err, data) => {
       if (err) {
         console.error('Error reading JSON file:', err);
-        res.status(500).send('Internal Server Error In Chemistry Questions Read');
+        res.status(500).send('Internal Server Error');
         return;
       }
       
@@ -83,7 +83,7 @@ module.exports.chemistry = async function(req, res){
     });
   } catch (err) {
     console.error("Error:", err);
-    res.status(500).send("Internal Server Error In Chemistry Questions Exports");
+    res.status(500).send("Internal Server Error");
   }
 }
 
@@ -92,7 +92,7 @@ module.exports.maths= async function(req, res){
     fs.readFile('./public/jsonFiles/maths.json', 'utf8', async (err, data) => {
       if (err) {
         console.error('Error reading JSON file:', err);
-        res.status(500).send('Internal Server Error In Maths Questions Read');
+        res.status(500).send('Internal Server Error');
         return;
       }
       
@@ -102,7 +102,7 @@ module.exports.maths= async function(req, res){
     });
   } catch (err) {
     console.error("Error:", err);
-    res.status(500).send("Internal Server Error In Maths Questions Exports");
+    res.status(500).send("Internal Server Error");
   }
 }
 
@@ -115,7 +115,7 @@ module.exports.adminQuesSub = async function(req, res){
     fs.readFile("./public/jsonFiles/"+fileName+'.json', 'utf8', async (err, data) => {
       if (err) {
         console.error('Error reading JSON file:', err);
-        res.status(500).send('Internal Server Error In Admin Questions Read');
+        res.status(500).send('Internal Server Error');
         return;
       }
 
@@ -183,7 +183,7 @@ module.exports.adminQuesSub = async function(req, res){
 
   } catch (err) {
     console.error("Error inserting data into MongoDB:", err);
-    res.status(500).send("Internal Server Error In Admin Questions Exports");
+    res.status(500).send("Internal Server Error");
   }
 };
 
