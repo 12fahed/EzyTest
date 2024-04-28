@@ -2,7 +2,7 @@
   "name": "csvupload",
   "version": "1.0.0",
   "description": "A web app to read csv files",
-  "main": "index.js",
+  "main": "./api/index.js",
   "engines": {
     "node": "20.x"
   },
