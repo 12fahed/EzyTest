@@ -17,6 +17,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 
 app.use(cookieParser())
+app.options("", cors(corsConfig))
 app.use(cors(corsConfig))
 
 var userRoute = require('./routes/userRoute')
