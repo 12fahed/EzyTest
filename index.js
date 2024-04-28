@@ -3,6 +3,8 @@ const express = require('express');
 const port = 3000;
 const app = express();
 const path = require('path');
+const cors = require('cors')
+
 
 const expressLayouts = require('express-ejs-layouts');
 const csv = require('csv-parser');
@@ -11,6 +13,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 
 app.use(cookieParser())
+app.use(cors())
 
 var userRoute = require('./routes/userRoute')
 
