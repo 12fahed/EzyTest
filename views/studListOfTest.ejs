@@ -1,14 +1,22 @@
 <link rel="stylesheet" href="../css/studListOfTest.css">
 <p>This Page Contains List Of test</p>
 <div class="test-container">
-    <%for(let exam of test){%>
-        <div class="test">
-            <div class="subject">Subject: <%= exam.TestName %></div>
-            <div>Starting Date: <%= exam.Date %></div>
-            <div>Starting Time: <%= exam.Time %></div>
-            <div>Duration: <%= exam.Duration %></div>
-            <div>Max Marks: <%= exam.Marks %></div>
-            <a href="/studDisplayQuestion/<%= exam.questPaperId %>"><button id="startTest">Attempt Test</button></a>
+    <% for(let exam of test){ %>
+        <% if(exam.Date === new Date().toISOString().slice(0, 10)){ %>
+            <div class="test active">
+        <% } else { %>
+            <div class="test inactive">
+        <% } %>
+                <div class="subject">Subject: <%= exam.TestName %></div>
+                <div>Starting Date: <%= exam.Date %></div>
+                <div>Starting Time: <%= exam.Time %></div>
+                <div>Duration: <%= exam.Duration %></div>
+                <div>Max Marks: <%= exam.Marks %></div>
+                <% if(exam.Date === new Date().toISOString().slice(0, 10)){ %>
+                    <a href="/studDisplayQuestion/<%= exam.questPaperId %>"><button id="startTest">Attempt Test</button></a>
+                <% } else { %>
+                    <h3>Tets Inactive Now</h3>
+                <% } %> 
         </div>
-    <%}%>
+    <% } %>
 </div>
