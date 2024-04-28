@@ -12,7 +12,7 @@ const corsConfig = {
 
 const expressLayouts = require('express-ejs-layouts');
 const csv = require('csv-parser');
-const db = require("./config/mongoose");
+const db = require("../config/mongoose");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 
@@ -20,7 +20,7 @@ app.use(cookieParser())
 app.options("", cors(corsConfig))
 app.use(cors(corsConfig))
 
-var userRoute = require('./routes/userRoute')
+var userRoute = require('../routes/userRoute')
 
 // setting layouts
 app.use(expressLayouts);
