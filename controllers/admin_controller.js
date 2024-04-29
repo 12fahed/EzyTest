@@ -4,7 +4,7 @@ const File = require("../models/csv");
 const { MongoClient } = require('mongodb')
 const cookieParser = require('cookie-parser');
 
-const client = new MongoClient("mongodb+srv://fahed12:12fahed@mpr.zgz8a91.mongodb.net/");
+const client = new MongoClient(process.env.DB);
 const databaseName = "Institute";
 const app = express();
 app.use(cookieParser())

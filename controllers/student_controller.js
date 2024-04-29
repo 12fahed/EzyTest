@@ -8,7 +8,7 @@ const { compareSync } = require('bcryptjs');
 const app = express();
 app.use(cookieParser())
 
-const client = new MongoClient("mongodb+srv://fahed12:12fahed@mpr.zgz8a91.mongodb.net/");
+const client = new MongoClient(process.env.DB);
 const databaseName = "Institute";
 
 app.use(bodyParser.urlencoded({ extended: true }))

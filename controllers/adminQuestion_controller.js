@@ -8,7 +8,7 @@ const nodemailer = require('nodemailer');
 const app = express();
 app.use(cookieParser())
 
-const client = new MongoClient("mongodb+srv://fahed12:12fahed@mpr.zgz8a91.mongodb.net/");
+const client = new MongoClient(process.env.DB);
 const databaseName = "Institute";
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -149,13 +149,13 @@ module.exports.adminQuesSub = async function(req, res){
             var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'ezyTestNotify@gmail.com',
-                pass: 'hnqkmlfvxokcsleo'
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_KEY
             }
             });
                 
             var mailOptions = {
-            from: ' "EzyTEST" <ezyTestNotifygmail.com>',
+            from: `"EzyTEST" <${process.env.EMAIL}>`,
             to: studentt.email,
             subject: 'Test is Scheduled',
             // text: 'Hello and Welcome to Educare, your key',

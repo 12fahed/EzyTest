@@ -121,13 +121,13 @@ module.exports.upload = async function(req, res) {
                     var transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: 'ezyTestNotify@gmail.com',
-                        pass: 'hnqkmlfvxokcsleo'
+                        user: process.env.EMAIL,
+                        pass: process.env.EMAIL_KEY
                     }
                     });
             
                     var mailOptions = {
-                    from: ' "EzyTEST" <ezyTestNotifygmail.com>',
+                    from: ` "EzyTEST" <${process.env.EMAIL}>`,
                     to: email,
                     subject: 'Welcome to EzyTest',
                     text: 'Hello and Welcome to Educare, your key',

@@ -10,6 +10,7 @@ const db = require("./config/mongoose");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 
+require('dotenv').config();
 app.use(cookieParser())
 
 var userRoute = require('./routes/userRoute')

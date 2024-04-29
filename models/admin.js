@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-mongoose.connect("mongodb+srv://fahed12:12fahed@mpr.zgz8a91.mongodb.net/Institute")
+mongoose.connect(process.env.INSTITUTE_DB)
 .then(()=>{
     console.log("Admin DB Connected");
 })
