@@ -1,38 +1,104 @@
-<style>
-    /* Button Styles */
-    .monochrome-button {
-        padding: 10px 20px;
-        margin: 10px;
-        background-color: #073B7B; /* Dark blue background from color scheme */
-        color: white; /* White text for contrast */
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
-    
-    /* Animation - Hover effect */
-    .monochrome-button:hover {
-        background-color: #63ABFD; /* Bright blue background for hover effect */
-        transform: scale(1.05); /* Slightly enlarges the button */
-        color: #073B7B; /* Change text color to dark blue for contrast */
-    }
-    
-    /* Animation - Focus effect */
-    .monochrome-button:focus {
-        outline: none;
-        box-shadow: 0 0 5px rgba(99, 171, 253, 0.5); /* Bright blue shadow */
-    }
-    
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header with Navigation Links and Footer</title>
+    <style>
+        /* Button Styles */
+        .monochrome-button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #073B7B; /* Dark blue background from color scheme */
+            color: white; /* White text for contrast */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
 
-<a href="/questionLanding">
-    <button class="monochrome-button">Start a Test</button>
-</a>
-<a href="/admin">
-    <button class="monochrome-button">View Class Details</button>
-</a>
-<a href="/adminTestRecord">
-    <button class="monochrome-button">View Test Records</button>
-</a>
+        /* Animation - Hover effect */
+        .monochrome-button:hover {
+            background-color: #63ABFD; /* Bright blue background for hover effect */
+            transform: scale(1.05); /* Slightly enlarges the button */
+            color: #073B7B; /* Change text color to dark blue for contrast */
+        }
+
+        /* Animation - Focus effect */
+        .monochrome-button:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(99, 171, 253, 0.5); /* Bright blue shadow */
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #073B7B; /* Dark blue background from color scheme */
+            color: white; /* White text for contrast */
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 20px;
+            color: white; /* White text for contrast */
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #63ABFD; /* Bright blue color for hover effect */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #073B7B; /* Dark blue background from color scheme */
+            color: white; /* White text for contrast */
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Website</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/contact">Contact</a>
+            <a href="/add-students">Add Students</a>
+            <a href="/dashboard">Dashboard</a>
+        </nav>
+    </header>
+
+    <!-- Your existing buttons -->
+    <a href="/questionLanding">
+        <button class="monochrome-button">Start a Test</button>
+    </a>
+    <a href="/admin">
+        <button class="monochrome-button">View Class Details</button>
+    </a>
+    <a href="/adminTestRecord">
+        <button class="monochrome-button">View Test Records</button>
+    </a>
+
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
