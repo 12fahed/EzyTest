@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 async function connectToDatabase() {
   try {
     await client.connect();
-    console.log("Connected to MongoDB Questions");
+    console.log("Connected to MongoDB Questions" + ` /controllers/adminQuestion_controller.js`);
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
   }

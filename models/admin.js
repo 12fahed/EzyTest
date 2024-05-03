@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 mongoose.connect(process.env.INSTITUTE_DB)
 .then(()=>{
-    console.log("Admin DB Connected");
+    console.log("Admin DB Connected " + `/models/admin.js`);
 })
 .catch(()=>{
     console.log("Admin DB Failed To Connect");
